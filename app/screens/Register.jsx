@@ -1,11 +1,25 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+  StatusBar
+} from 'react-native';
+import CustomButton from '../components/CustomButton';
 import AuthLayout from '../layouts/Auth';
 
-const Login = () => {
+const Register = ({ navigation }) => {
   return (
     <AuthLayout>
-      <View style={styles.inputDiv}>
+      <KeyboardAvoidingView style={styles.inputDiv} behavior="padding">
+        <TextInput
+          autoComplete="name"
+          autoCorrect={false}
+          placeholder="Username"
+          placeholderTextColor="#bfffed"
+          style={styles.input}
+        ></TextInput>
         <TextInput
           autoComplete="email"
           autoCorrect={false}
@@ -22,16 +36,20 @@ const Login = () => {
           placeholderTextColor="#bfffed"
           style={styles.input}
         ></TextInput>
-      </View>
+        <CustomButton
+          text="Register"
+          color="#bfffed"
+          onClick={() => navigation.navigate('Welcome')}
+        />
+      </KeyboardAvoidingView>
     </AuthLayout>
   );
 };
 const styles = StyleSheet.create({
   inputDiv: {
-    width: '100%',
     gap: 20,
-    flex: 0.5,
-    width: '90%'
+    width: '90%',
+    marginBottom: 40
   },
   input: {
     color: 'white',
@@ -43,4 +61,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff18'
   }
 });
-export default Login;
+export default Register;
