@@ -27,13 +27,14 @@ const AuthLayout = ({ children }) => {
 };
 const styles = StyleSheet.create({
   background: {
+    display: 'flex',
     flex: 1,
-    justifyContent: 'space-between',
     alignItems: 'center'
   },
   titleDiv: {
     marginVertical: 'auto',
-    flex: 0.5
+    flex: 0.5,
+    justifyContent: 'center'
   },
   logo: {
     width: 250,

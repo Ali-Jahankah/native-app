@@ -1,41 +1,43 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  KeyboardAvoidingView,
-  StatusBar
-} from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import CustomButton from '../components/CustomButton';
+import InputWithIcon from '../components/InputWithIcon';
 import AuthLayout from '../layouts/Auth';
 
 const Register = ({ navigation }) => {
   return (
     <AuthLayout>
       <KeyboardAvoidingView style={styles.inputDiv} behavior="padding">
-        <TextInput
+        <InputWithIcon
           autoComplete="name"
           autoCorrect={false}
           placeholder="Username"
           placeholderTextColor="#bfffed"
-          style={styles.input}
-        ></TextInput>
-        <TextInput
+          iconName="human"
+          iconColor="#24e997ff"
+          iconSize={30}
+        />
+        <InputWithIcon
           autoComplete="email"
           autoCorrect={false}
           placeholder="Email"
           keyboardType="email-address"
           placeholderTextColor="#bfffed"
-          style={styles.input}
-        ></TextInput>
-        <TextInput
+          iconColor="#24e997ff"
+          iconSize={30}
+          iconName="email"
+        />
+
+        <InputWithIcon
           autoComplete="password"
           autoCorrect={false}
           secureTextEntry={true}
           placeholder="Password"
           placeholderTextColor="#bfffed"
-          style={styles.input}
-        ></TextInput>
+          iconColor="#24e997ff"
+          iconName="lock"
+          iconSize={30}
+        />
         <CustomButton
           text="Register"
           color="#bfffed"
@@ -49,16 +51,7 @@ const styles = StyleSheet.create({
   inputDiv: {
     gap: 20,
     width: '90%',
-    marginBottom: 40
-  },
-  input: {
-    color: 'white',
-    borderColor: '#bfffed',
-    borderRadius: 10,
-    borderBottomWidth: 1,
-    fontSize: 20,
-    padding: 10,
-    backgroundColor: '#ffffff18'
+    margin: 'auto'
   }
 });
 export default Register;

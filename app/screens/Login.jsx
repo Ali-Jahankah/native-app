@@ -1,46 +1,48 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
+import CustomButton from '../components/CustomButton';
+import InputWithIcon from '../components/InputWithIcon';
 import AuthLayout from '../layouts/Auth';
-
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <AuthLayout>
-      <View style={styles.inputDiv}>
-        <TextInput
+      <KeyboardAvoidingView style={styles.inputSection} behavior="padding">
+        <InputWithIcon
+          iconColor="#24e997ff"
+          iconName="email"
+          iconSize={30}
           autoComplete="email"
           autoCorrect={false}
           placeholder="Email"
           keyboardType="email-address"
           placeholderTextColor="#bfffed"
-          style={styles.input}
-        ></TextInput>
-        <TextInput
+        />
+        <InputWithIcon
           autoComplete="password"
           autoCorrect={false}
           secureTextEntry={true}
           placeholder="Password"
           placeholderTextColor="#bfffed"
-          style={styles.input}
-        ></TextInput>
-      </View>
+          iconColor="#24e997ff"
+          iconName="lock"
+          iconSize={30}
+        />
+        <CustomButton
+          text="Login"
+          color="#bfffed"
+          onClick={() => navigation.navigate('Welcome')}
+        />
+      </KeyboardAvoidingView>
     </AuthLayout>
   );
 };
 const styles = StyleSheet.create({
-  inputDiv: {
+  inputSection: {
     width: '100%',
     gap: 20,
     flex: 0.5,
-    width: '90%'
-  },
-  input: {
-    color: 'white',
-    borderColor: '#bfffed',
-    borderRadius: 10,
-    borderBottomWidth: 1,
-    fontSize: 20,
-    padding: 10,
-    backgroundColor: '#ffffff18'
+    width: '90%',
+    margin: 'auto'
   }
 });
 export default Login;
