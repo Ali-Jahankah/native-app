@@ -6,7 +6,11 @@ import AuthLayout from '../layouts/Auth';
 const Login = ({ navigation }) => {
   return (
     <AuthLayout>
-      <KeyboardAvoidingView style={styles.inputSection} behavior="padding">
+      <KeyboardAvoidingView
+        style={styles.inputSection}
+        behavior="padding"
+        enabled
+      >
         <InputWithIcon
           iconColor="#24e997ff"
           iconName="email"

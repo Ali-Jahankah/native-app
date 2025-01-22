@@ -10,7 +10,9 @@ const InputWithIcon = ({
   autoCorrect,
   placeholder,
   keyboardType,
-  placeholderTextColor
+  placeholderTextColor,
+  secureTextEntry,
+  handler
 }) => {
   return (
     <View style={styles.inputDiv}>
@@ -27,6 +29,8 @@ const InputWithIcon = ({
         keyboardType={keyboardType}
         placeholderTextColor={placeholderTextColor}
         style={styles.input}
+        onChangeText={handler}
+        secureTextEntry={secureTextEntry}
       ></TextInput>
     </View>
   );
