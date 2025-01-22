@@ -29,7 +29,6 @@ const Login = ({ navigation }) => {
         />
         <CustomButton
           text="Login"
-          color="#bfffed"
           onClick={() => navigation.navigate('Welcome')}
         />
       </KeyboardAvoidingView>

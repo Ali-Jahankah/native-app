@@ -40,7 +40,6 @@ const Register = ({ navigation }) => {
         />
         <CustomButton
           text="Register"
-          color="#bfffed"
           onClick={() => navigation.navigate('Welcome')}
         />
       </KeyboardAvoidingView>
