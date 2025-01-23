@@ -4,6 +4,9 @@ import CustomButton from '../components/CustomButton';
 import InputWithIcon from '../components/InputWithIcon';
 import AuthLayout from '../layouts/Auth';
 import { Formik } from 'formik';
+import { validationSchema } from '../utils/formValidationSchema';
+import ErrorMessage from '../components/ErrorMessage';
+
 const Register = ({ navigation }) => {
   return (
     <AuthLayout>
@@ -11,8 +14,15 @@ const Register = ({ navigation }) => {
         <Formik
           initialValues={{ username: '', email: '', password: '' }}
           onSubmit={(values) => console.log(values)}
+          validationSchema={validationSchema}
         >
-          {({ handleChange, handleSubmit }) => (
+          {({
+            handleChange,
+            handleSubmit,
+            errors,
+            setFieldTouched,
+            touched
+          }) => (
             <>
               <InputWithIcon
                 autoComplete="name"
@@ -22,8 +32,15 @@ const Register = ({ navigation }) => {
                 iconName="human"
                 iconColor="#24e997ff"
                 iconSize={30}
-                handler={handleChange('username')}
+                onChangeText={handleChange('username')}
+                onBlur={() => setFieldTouched('username')}
               />
+              {touched.username && (
+                <ErrorMessage
+                  message={errors.username}
+                  visible={touched.username}
+                />
+              )}
               <InputWithIcon
                 autoComplete="email"
                 autoCorrect={false}
@@ -33,9 +50,12 @@ const Register = ({ navigation }) => {
                 iconColor="#24e997ff"
                 iconSize={30}
                 iconName="email"
-                handler={handleChange('email')}
+                onChangeText={handleChange('email')}
+                onBlur={() => setFieldTouched('email')}
               />
-
+              {touched.email && (
+                <ErrorMessage message={errors.email} visible={touched.email} />
+              )}
               <InputWithIcon
                 autoComplete="password"
                 autoCorrect={false}
@@ -45,8 +65,15 @@ const Register = ({ navigation }) => {
                 iconColor="#24e997ff"
                 iconName="lock"
                 iconSize={30}
-                handler={handleChange('password')}
+                onChangeText={handleChange('password')}
+                onBlur={() => setFieldTouched('password')}
               />
+              {touched.password && (
+                <ErrorMessage
+                  message={errors.password}
+                  visible={touched.password}
+                />
+              )}
               <CustomButton text="Register" onClick={handleSubmit} />
             </>
           )}

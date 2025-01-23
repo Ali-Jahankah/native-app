@@ -2,18 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const InputWithIcon = ({
-  iconName,
-  iconColor,
-  iconSize,
-  autoComplete,
-  autoCorrect,
-  placeholder,
-  keyboardType,
-  placeholderTextColor,
-  secureTextEntry,
-  handler
-}) => {
+const InputWithIcon = ({ iconName, iconColor, iconSize, ...otherProps }) => {
   return (
     <View style={styles.inputDiv}>
       <MaterialCommunityIcons
@@ -22,16 +11,7 @@ const InputWithIcon = ({
         color={iconColor}
         style={styles.icon}
       />
-      <TextInput
-        autoComplete={autoComplete}
-        autoCorrect={autoCorrect}
-        placeholder={placeholder}
-        keyboardType={keyboardType}
-        placeholderTextColor={placeholderTextColor}
-        style={styles.input}
-        onChangeText={handler}
-        secureTextEntry={secureTextEntry}
-      ></TextInput>
+      <TextInput style={styles.input} {...otherProps}></TextInput>
     </View>
   );
 };
